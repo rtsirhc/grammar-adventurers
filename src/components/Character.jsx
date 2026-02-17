@@ -6,8 +6,8 @@ const Character = ({ name, image, dialogue, isTalking = true }) => {
 
             {/* Speech Bubble (Only if talking) */}
             {isTalking && dialogue && (
-                <div className="absolute bottom-full mb-4 w-64 bg-white p-4 rounded-2xl shadow-xl border-2 border-slate-200 z-20 animate-bounce-slow">
-                    <p className="text-lg font-comic leading-snug text-slate-800">
+                <div className="absolute bottom-full mb-4 w-64 bg-white p-4 rounded-2xl shadow-xl border-2 border-slate-200 z-20">
+                    <p className="text-base font-comic leading-snug text-slate-800">
                         {dialogue}
                     </p>
                     {/* Bubble Tail */}
@@ -16,15 +16,15 @@ const Character = ({ name, image, dialogue, isTalking = true }) => {
             )}
 
             {/* Character Sprite */}
-            <div className="relative z-10">
+            <div className="relative z-10 flex flex-col items-center">
                 <img
                     src={image}
                     alt={name}
-                    className="h-64 md:h-80 object-contain drop-shadow-2xl filter hover:brightness-110 transition mix-blend-multiply"
+                    className="w-full max-w-[280px] h-auto object-contain drop-shadow-2xl filter hover:brightness-110 transition"
                 />
 
                 {/* Name Badge */}
-                <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 bg-adventure-blue text-white px-3 py-1 rounded-full text-sm font-bold shadow-md border-2 border-white uppercase tracking-wider whitespace-nowrap">
+                <div className="mt-1 bg-adventure-blue text-white px-4 py-1 rounded-full text-sm font-bold shadow-md border-2 border-white uppercase tracking-wider whitespace-nowrap">
                     {name}
                 </div>
             </div>

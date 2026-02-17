@@ -11,7 +11,7 @@ An interactive storybook web application for 11-year-old ESL students (A1-A2 lev
 - **Timer**: Not specified for games, but implicit for the test? (Will confirm).
 - **Images**: Custom generated characters (diverse group of kids) + Time Machine illustration.
 - **AI Features**: None requested (images generated pre-build).
-- **Data Storage**: Local state for the session. No persistent database needed for the MVP (unless user wants to save test results across sessions, but "practice" implies transient is okay. "Mock Test" usually implies seeing a result at the end).
+- **Data Storage**: Supabase (`exam_results` table) for storing Mock Test scores.
 - **Deployment**: GitHub + Vercel.
 - **Device Support**: Classroom TV (primary) + Desktops/Tablets/Tablets (secondary for home use).
 
@@ -20,6 +20,7 @@ An interactive storybook web application for 11-year-old ESL students (A1-A2 lev
 - **Styling**: Tailwind CSS (v4)
 - **Routing**: React Router (implied for navigation)
 - **State Management**: React State / Context (for global theme/Time Machine effect)
+- **Backend**: Supabase (for exam results)
 
 ## Project Phases
 
@@ -114,4 +115,14 @@ An interactive storybook web application for 11-year-old ESL students (A1-A2 lev
 - **Visuals**: Added individual Pixar-style sprites for Leo, Mia, Ivy, Sam. Added new Time Machine illustration.
 - **Components**: Created `TitlePage`, updated `StoryPage` for split view, refactored `Character` for speech bubbles.
 - **Content**: Updated Mock Test with A2-B1 reading passages.
+**Status**: Deployed & Verified.
+
+### Phase 12: Final Polish & Supabase 💎
+**Completed by**: Antigravity
+**Date**: 2026-02-17
+**Changes**:
+- **Data Persistence**: Integrated Supabase to save student Mock Test scores.
+- **Content**: Added clear grammar rules and game instructions to all chapters. Fixed Chapter 1 typo.
+- **Visuals**: Made character backgrounds transparent. Added "names & intro" to Welcome page.
+- **Logic**: Ensured Time Machine grayscale effect resets automatically.
 **Status**: Deployed & Verified.
