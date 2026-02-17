@@ -1,31 +1,31 @@
 import React, { useState } from 'react';
 import StoryPage from '../components/StoryPage';
 import Character from '../components/Character';
+import leoImg from '../assets/leo.png';
+import miaImg from '../assets/mia.png';
+import ivyImg from '../assets/ivy.png';
+import samImg from '../assets/sam.png';
 
 const Chapter6_Possessives = () => {
     const [selectedItem, setSelectedItem] = useState(null);
     const [completed, setCompleted] = useState([]);
 
-    // Items to give
     const items = [
-        { id: 'camera', emoji: '📷', name: 'Camera', owner: 'Mia', pronouns: 'HER' },
-        { id: 'skateboard', emoji: '🛹', name: 'Skateboard', owner: 'Leo', pronouns: 'HIS' },
-        { id: 'map', emoji: '🗺️', name: 'Map', owner: 'Ivy', pronouns: 'HER' },
-        { id: 'binoculars', emoji: '🔭', name: 'Binoculars', owner: 'Sam', pronouns: 'HIS' }
+        { id: 'camera', emoji: '📷', name: 'Camera', owner: 'Mia' },
+        { id: 'skateboard', emoji: '🛹', name: 'Skateboard', owner: 'Leo' },
+        { id: 'map', emoji: '🗺️', name: 'Map', owner: 'Ivy' },
+        { id: 'binoculars', emoji: '🔭', name: 'Binoculars', owner: 'Sam' }
     ];
 
-    // People to receive
     const people = [
-        { name: 'Mia', color: 'bg-pink-100', text: '👩' },
-        { name: 'Leo', color: 'bg-blue-100', text: '👦' },
-        { name: 'Ivy', color: 'bg-yellow-100', text: '👧' },
-        { name: 'Sam', color: 'bg-green-100', text: '🧑' }
+        { name: 'Mia', image: miaImg },
+        { name: 'Leo', image: leoImg },
+        { name: 'Ivy', image: ivyImg },
+        { name: 'Sam', image: samImg }
     ];
 
     const handleItemClick = (item) => {
-        if (!completed.includes(item.id)) {
-            setSelectedItem(item);
-        }
+        if (!completed.includes(item.id)) setSelectedItem(item);
     };
 
     const handlePersonClick = (person) => {
@@ -33,46 +33,33 @@ const Chapter6_Possessives = () => {
             setCompleted([...completed, selectedItem.id]);
             setSelectedItem(null);
         } else if (selectedItem) {
-            alert(`Oops! That's not ${person.name}'s item.`); // Simple feedback
+            alert(`That's not ${person.name}'s item!`);
         }
     };
 
     return (
         <StoryPage
             title="Chapter 6: Who Does It Belong To?"
-            NextChapterPath="/chapter/7"
-            PrevChapterPath="/chapter/5"
+            NextChapterPath="/chapter/7/title"
+            PrevChapterPath="/chapter/6/title"
+
             ChapterContent={
-                <div className="space-y-8">
-                    <div className="bg-red-50 p-6 rounded-xl border-2 border-red-200">
-                        <h2 className="text-2xl font-bold text-red-600 mb-2">Possessive Adjectives</h2>
-                        <div className="grid grid-cols-2 gap-4 text-lg">
-                            <ul className="list-disc pl-5">
-                                <li>My name</li>
-                                <li>Your house</li>
-                                <li><strong>His</strong> cat (Boy)</li>
-                                <li><strong>Her</strong> dog (Girl)</li>
-                            </ul>
-                            <ul className="list-disc pl-5">
-                                <li><strong>Its</strong> ball (Animal/Thing)</li>
-                                <li>Our team</li>
-                                <li>Their school</li>
-                            </ul>
-                        </div>
+                <div className="space-y-6">
+                    <h3 className="font-bold text-xl text-red-600 mb-2 border-b-2 border-red-100 pb-2">Possessive Adjectives</h3>
+                    <div className="grid grid-cols-2 gap-2 text-sm md:text-base mb-4">
+                        <div>My name</div>
+                        <div>Your house</div>
+                        <div><strong>His</strong> cat (Boy)</div>
+                        <div><strong>Her</strong> dog (Girl)</div>
                     </div>
 
-                    <Character
-                        name="Leo"
-                        dialogue="We mixed up our adventure gear! Can you help us get our things back?"
-                    />
-
-                    <div className="bg-white p-6 rounded-xl shadow-lg border-2 border-slate-200 min-h-[400px]">
-                        <h3 className="text-xl font-bold text-center mb-6 text-adventure-blue">
+                    <div className="bg-white p-4 rounded-xl shadow border-2 border-slate-100">
+                        <p className="font-bold text-center mb-4 text-adventure-blue">
                             {selectedItem ? `Give the ${selectedItem.name} to...` : "Click an item to pick it up!"}
-                        </h3>
+                        </p>
 
-                        {/* Items Area */}
-                        <div className="flex justify-center gap-4 mb-8">
+                        {/* Items */}
+                        <div className="flex justify-center gap-4 mb-4">
                             {items.map(item => {
                                 if (completed.includes(item.id)) return null;
                                 const isSelected = selectedItem?.id === item.id;
@@ -80,37 +67,33 @@ const Chapter6_Possessives = () => {
                                     <button
                                         key={item.id}
                                         onClick={() => handleItemClick(item)}
-                                        className={`text-5xl p-4 rounded-xl border-4 transition transform hover:scale-110 ${isSelected ? 'bg-yellow-200 border-yellow-400 rotate-12 scale-110 shadow-xl' : 'bg-slate-50 border-slate-200'}`}
+                                        className={`text-4xl p-3 rounded-xl border-4 transition ${isSelected ? 'bg-yellow-200 border-yellow-400 rotate-12 scale-110' : 'bg-slate-50 border-slate-200 hover:scale-105'}`}
                                     >
                                         {item.emoji}
                                     </button>
                                 );
                             })}
                             {completed.length === items.length && (
-                                <div className="text-green-500 font-bold text-2xl anim-bounce">All items returned! 🎉</div>
+                                <div className="text-green-500 font-bold text-xl animate-bounce">Great job! 🎉</div>
                             )}
                         </div>
-
-                        {/* People Area (Drop Zones) */}
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                            {people.map(person => (
-                                <button
-                                    key={person.name}
-                                    onClick={() => handlePersonClick(person)}
-                                    className={`p-4 rounded-xl border-2 ${person.color} border-slate-300 hover:brightness-95 transition flex flex-col items-center gap-2`}
-                                >
-                                    <div className="text-4xl">{person.text}</div>
-                                    <div className="font-bold">{person.name}</div>
-                                    {/* Show collected items */}
-                                    <div className="flex bg-white/50 rounded p-1 min-h-[30px] w-full justify-center">
-                                        {items.filter(i => i.owner === person.name && completed.includes(i.id)).map(i => (
-                                            <span key={i.id} className="text-lg">{i.emoji}</span>
-                                        ))}
-                                    </div>
-                                </button>
-                            ))}
-                        </div>
                     </div>
+                </div>
+            }
+
+            CharacterArea={
+                <div className="grid grid-cols-4 gap-2 w-full h-full items-end">
+                    {people.map(person => (
+                        <div key={person.name} onClick={() => handlePersonClick(person)} className="relative cursor-pointer transition transform hover:scale-105 group">
+                            <img src={person.image} alt={person.name} className="h-32 md:h-40 object-contain mx-auto" />
+                            {/* Floating collected item */}
+                            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-4">
+                                {items.filter(i => i.owner === person.name && completed.includes(i.id)).map(i => (
+                                    <span key={i.id} className="text-3xl drop-shadow-md animate-bounce">{i.emoji}</span>
+                                ))}
+                            </div>
+                        </div>
+                    ))}
                 </div>
             }
         />

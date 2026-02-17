@@ -1,29 +1,32 @@
 import React from 'react';
-import characterImg from '../assets/characters_sample.png';
 
-const Character = ({ name, dialogue, position = "left" }) => {
+const Character = ({ name, image, dialogue, isTalking = true }) => {
     return (
-        <div className={`flex items-center gap-6 mb-10 ${position === "right" ? "flex-row-reverse text-right" : "flex-row text-left"}`}>
+        <div className="relative group flex flex-col items-center transition-all duration-500 hover:scale-105">
 
-            {/* Character Avatar with Name Badge */}
-            <div className="flex flex-col items-center">
-                <div className="w-28 h-28 md:w-36 md:h-36 rounded-full border-4 border-white shadow-xl overflow-hidden bg-adventure-blue transform hover:scale-105 transition duration-300">
-                    <img
-                        src={characterImg}
-                        alt={name}
-                        className="w-full h-full object-cover"
-                    />
+            {/* Speech Bubble (Only if talking) */}
+            {isTalking && dialogue && (
+                <div className="absolute bottom-full mb-4 w-64 bg-white p-4 rounded-2xl shadow-xl border-2 border-slate-200 z-20 animate-bounce-slow">
+                    <p className="text-lg font-comic leading-snug text-slate-800">
+                        {dialogue}
+                    </p>
+                    {/* Bubble Tail */}
+                    <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-6 h-6 bg-white border-b-2 border-r-2 border-slate-200 rotate-45"></div>
                 </div>
-                <div className={`mt-[-15px] z-10 px-4 py-1 rounded-full text-white font-bold shadow-md text-sm uppercase tracking-wide ${position === "right" ? "bg-adventure-red" : "bg-adventure-blue"}`}>
+            )}
+
+            {/* Character Sprite */}
+            <div className="relative z-10">
+                <img
+                    src={image}
+                    alt={name}
+                    className="h-64 md:h-80 object-contain drop-shadow-2xl filter hover:brightness-110 transition"
+                />
+
+                {/* Name Badge */}
+                <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 bg-adventure-blue text-white px-3 py-1 rounded-full text-sm font-bold shadow-md border-2 border-white uppercase tracking-wider whitespace-nowrap">
                     {name}
                 </div>
-            </div>
-
-            {/* Dialogue Text (No Bubble) */}
-            <div className="max-w-xl">
-                <p className="text-2xl font-comic leading-relaxed text-slate-700 drop-shadow-sm">
-                    "{dialogue}"
-                </p>
             </div>
 
         </div>

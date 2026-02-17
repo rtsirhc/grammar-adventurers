@@ -2,38 +2,54 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useGame } from '../context/GameContext';
 
-const StoryPage = ({ title, ChapterContent, NextChapterPath, PrevChapterPath }) => {
+const StoryPage = ({ title, ChapterContent, NextChapterPath, PrevChapterPath, CharacterArea }) => {
     const { isTimeMachineActive } = useGame();
 
     return (
-        <div className={`flex flex-col items-center justify-center min-h-screen p-8 ${isTimeMachineActive ? 'bg-gray-200' : 'bg-gradient-to-br from-adventure-blue to-adventure-green'}`}>
-            <div className="bg-white rounded-3xl shadow-2xl p-10 max-w-5xl w-full border-8 border-white bg-opacity-90 backdrop-blur-sm min-h-[80vh] flex flex-col relative overflow-hidden">
+        <div className={`flex flex-col min-h-screen overflow-hidden ${isTimeMachineActive ? 'bg-gray-200' : 'bg-slate-50'}`}>
 
-                {/* Header */}
-                <div className="flex justify-between items-center mb-8 border-b-4 border-slate-100 pb-4">
-                    <h1 className="text-4xl font-comic font-bold text-adventure-blue">{title}</h1>
-                    <div className="flex gap-2">
-                        {/* Visual indicator for current mode */}
-                        {isTimeMachineActive && <span className="text-xs font-bold bg-gray-800 text-white px-2 py-1 rounded">PAST MODE</span>}
+            {/* Top Bar with Title */}
+            <div className={`p-4 shadow-md z-20 flex justify-between items-center ${isTimeMachineActive ? 'bg-gray-800 text-white' : 'bg-white text-adventure-blue'}`}>
+                <h2 className="text-xl md:text-2xl font-comic font-bold truncate">{title}</h2>
+                {isTimeMachineActive && <span className="bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold animate-pulse">TIME MACHINE ACTIVE</span>}
+            </div>
+
+            {/* Main Book Content Area */}
+            <div className="flex-grow flex flex-col md:flex-row relative">
+
+                {/* Left Page / Top (Mobile): Content & Interactions */}
+                <div className="w-full md:w-1/2 p-6 md:p-10 overflow-y-auto flex flex-col justify-center bg-white/50 relative z-10">
+                    <div className="max-w-xl mx-auto w-full">
+                        {ChapterContent}
                     </div>
                 </div>
 
-                {/* Content Area */}
-                <div className="flex-grow">
-                    {ChapterContent}
+                {/* Right Page / Bottom (Mobile): Characters & Visuals */}
+                <div className={`w-full md:w-1/2 min-h-[40vh] md:min-h-auto relative flex items-end justify-center p-4 border-l-4 border-slate-100 ${isTimeMachineActive ? 'grayscale sepia contrast-125' : ''}`}>
+                    {/* Background tint/pattern would go here */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none"></div>
+
+                    {/* Character Staging Area */}
+                    <div className="w-full h-full flex items-end justify-center gap-4 relative z-0">
+                        {CharacterArea}
+                    </div>
                 </div>
 
-                {/* Navigation Footer */}
-                <div className="mt-8 flex justify-between items-center">
+                {/* Page Turn Arrows (Overlay) */}
+                <div className="absolute inset-0 pointer-events-none flex justify-between items-center px-4 md:px-8 z-50">
                     {PrevChapterPath ? (
-                        <Link to={PrevChapterPath} className="px-6 py-3 bg-slate-200 hover:bg-slate-300 rounded-full font-bold text-slate-700 transition transform hover:scale-105">
-                            ⬅️ Previous
+                        <Link to={PrevChapterPath} className="pointer-events-auto opacity-50 hover:opacity-100 transition transform hover:-translate-x-1 duration-300">
+                            <div className="w-16 h-16 bg-white/80 backdrop-blur rounded-full shadow-lg flex items-center justify-center text-4xl text-adventure-blue hover:text-adventure-red border-2 border-slate-200">
+                                ⬅️
+                            </div>
                         </Link>
                     ) : <div></div>}
 
                     {NextChapterPath ? (
-                        <Link to={NextChapterPath} className="px-6 py-3 bg-adventure-yellow hover:bg-yellow-400 rounded-full font-bold text-white shadow-lg transition transform hover:scale-105">
-                            Next Adventure ➡️
+                        <Link to={NextChapterPath} className="pointer-events-auto opacity-80 hover:opacity-100 transition transform hover:translate-x-1 duration-300">
+                            <div className="w-16 h-16 bg-white/90 backdrop-blur rounded-full shadow-xl flex items-center justify-center text-4xl text-adventure-green hover:text-green-600 border-2 border-green-200 animate-pulse-slow">
+                                ➡️
+                            </div>
                         </Link>
                     ) : <div></div>}
                 </div>

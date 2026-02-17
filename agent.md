@@ -96,3 +96,12 @@ An interactive storybook web application for 11-year-old ESL students (A1-A2 lev
 - Updated `src/index.css` with `@import "tailwindcss";` syntax.
 - Fixed image import in `Character.jsx` to resolve asset paths in production build.
 **Status**: Deployed & Verified.
+
+### Phase 10: Design Refinements & Fixes ✅
+**Completed by**: Antigravity
+**Date**: 2026-02-17
+**Changes**:
+- **Font**: Switched to "Comic Sans MS" for a playful look.
+- **Characters**: Redesigned to remove "text message" bubbles. Now features large avatars with name badges and natural text.
+- **Navigation**: Fixed "404 Not Found" error on Next/Previous buttons by switching to React Router `<Link>`.
+**Status**: Deployed & Verified.

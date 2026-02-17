@@ -35,46 +35,46 @@ const MockTest = () => {
         // Simple Past
         { id: 15, text: "Yesterday, I ______ to the park.", options: ["go", "goed", "went"], correct: "went" },
 
-        // Reading Tasks
+        // ADVANCED Reading Tasks (A2-B1)
         {
             id: 16,
             type: "reading",
-            passage: "Leo: 'Hi, I'm Leo! I love adventure. Yesterday I visited the forest. I saw a big bear!'",
-            text: "Where did Leo go yesterday?",
-            options: ["The beach", "The forest", "School"],
-            correct: "The forest"
+            passage: "Leo has a very busy routine. On Mondays, he goes to soccer practice after school. On Tuesdays, he helps his mom cook dinner. But on Wednesdays, he is free! He usually plays video games or reads comic books. His favorite comic book is about a superhero who can fly.",
+            text: "What does Leo do on Wednesdays?",
+            options: ["He plays soccer.", "He cooks dinner.", "He plays video games."],
+            correct: "He plays video games."
         },
         {
             id: 17,
             type: "reading",
-            passage: "Mia likes photos. She has a red camera. She takes photos of her cat, Whiskers.",
-            text: "What color is Mia's camera?",
-            options: ["Blue", "Red", "Black"],
-            correct: "Red"
+            passage: "Mia loves photography. Last weekend, she went to the zoo with her family. It was a sunny day. She took photos of many animals, but she liked the monkeys the best because they were funny. However, she lost her lens cap near the lion cage!",
+            text: "Why did Mia like the monkeys?",
+            options: ["They were sunny.", "They were funny.", "They were near the lions."],
+            correct: "They were funny."
         },
         {
             id: 18,
             type: "reading",
-            passage: "Sam is hungry. He wants a burger. But there is only salad in the fridge.",
-            text: "What does Sam want?",
-            options: ["A burger", "Salad", "Pizza"],
-            correct: "A burger"
+            passage: "Sam wants to be an explorer. He has a big map of the world in his bedroom. He wants to visit the Amazon Rainforest to see colorful birds and tall trees. He is learning Spanish because he wants to travel to South America next year.",
+            text: "Why is Sam learning Spanish?",
+            options: ["To talk to his friends.", "To visit South America.", "To read his map."],
+            correct: "To visit South America."
         },
         {
             id: 19,
             type: "reading",
-            passage: "Yesterday was Sunday. Ivy played tennis with her brother. They were happy.",
-            text: "Who did Ivy play with?",
-            options: ["Her sister", "Her brother", "Leo"],
-            correct: "Her brother"
+            passage: "Ivy and her brother, Ben, are very different. Ivy likes science and math, but Ben loves art and music. Ivy is quiet and likes to read, but Ben is loud and likes to sing. Despite their differences, they are best friends and always help each other with homework.",
+            text: "How are Ivy and Ben different?",
+            options: ["Ivy is loud, Ben is quiet.", "Ivy likes science, Ben likes art.", "They do not like each other."],
+            correct: "Ivy likes science, Ben likes art."
         },
         {
             id: 20,
             type: "reading",
-            passage: "The Time Machine is shiny. It has a big red button. Do not touch it!",
-            text: "What does the machine have?",
-            options: ["A blue button", "A red button", "A green button"],
-            correct: "A red button"
+            passage: "The Time Machine was not a toy. It was a powerful invention created by Professor Zoom. It could travel 100 years into the past or the future in just one second! But there was one rule: never touch the red button unless it is an emergency.",
+            text: "What was the important rule?",
+            options: ["Travel only 100 years.", "Never touch the red button.", "Always visit the future."],
+            correct: "Never touch the red button."
         }
     ];
 
@@ -91,7 +91,7 @@ const MockTest = () => {
             } else {
                 setShowResults(true);
             }
-        }, 1000);
+        }, 1200);
     };
 
     if (showResults) {
@@ -120,7 +120,7 @@ const MockTest = () => {
 
     return (
         <div className="min-h-screen bg-slate-100 flex flex-col items-center justify-center p-4">
-            <div className="max-w-3xl w-full bg-white rounded-3xl shadow-xl overflow-hidden border-4 border-white">
+            <div className="max-w-4xl w-full bg-white rounded-3xl shadow-xl overflow-hidden border-4 border-white">
                 {/* Header */}
                 <div className="bg-adventure-blue p-6 text-white flex justify-between items-center">
                     <h2 className="text-2xl font-bold">Mock Test 📝</h2>
@@ -135,8 +135,8 @@ const MockTest = () => {
                 {/* Content */}
                 <div className="p-8 md:p-12">
                     {question.passage && (
-                        <div className="bg-yellow-50 p-6 rounded-xl border-l-8 border-yellow-400 mb-8 text-lg font-serif italic text-slate-700">
-                            " {question.passage} "
+                        <div className="bg-yellow-50 p-8 rounded-xl border-l-8 border-yellow-400 mb-8 text-xl font-medium leading-relaxed text-slate-700 shadow-sm">
+                            {question.passage}
                         </div>
                     )}
 
@@ -153,8 +153,8 @@ const MockTest = () => {
                                 className={`
                                     p-4 rounded-xl text-xl font-bold border-2 transition-all text-left px-8
                                     ${selectedAnswer === option
-                                        ? (option === question.correct ? "bg-green-100 border-green-500 text-green-700" : "bg-red-100 border-red-500 text-red-700")
-                                        : "bg-white border-slate-200 hover:bg-blue-50 hover:border-blue-300 text-slate-700 shadow-sm"
+                                        ? (option === question.correct ? "bg-green-100 border-green-500 text-green-700 transform scale-105" : "bg-red-100 border-red-500 text-red-700 transform scale-105")
+                                        : "bg-white border-slate-200 hover:bg-blue-50 hover:border-blue-300 text-slate-700 shadow-sm hover:translate-x-2"
                                     }
                                 `}
                             >

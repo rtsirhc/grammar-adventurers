@@ -1,97 +1,67 @@
 import React, { useState } from 'react';
 import StoryPage from '../components/StoryPage';
 import Character from '../components/Character';
+import leoImg from '../assets/leo.png';
+import miaImg from '../assets/mia.png';
 
 const Chapter3_DoDoes = () => {
-    const [answers, setAnswers] = useState({ q1: null, q2: null });
+    const [answers, setAnswers] = useState({});
 
-    const checkAnswer = (q, val) => {
-        setAnswers({ ...answers, [q]: val });
+    const checkAnswer = (qId, answer) => {
+        setAnswers({ ...answers, [qId]: answer });
     };
 
     return (
         <StoryPage
-            title="Chapter 3: The Secret Helpers"
-            NextChapterPath="/chapter/4"
-            PrevChapterPath="/chapter/2"
+            title="Chapter 3: Do or Does?"
+            NextChapterPath="/chapter/4/title"
+            PrevChapterPath="/chapter/3/title"
+
             ChapterContent={
-                <div className="space-y-8">
-                    <div className="bg-purple-50 p-6 rounded-xl border-2 border-purple-200">
-                        <h2 className="text-2xl font-bold text-purple-600 mb-2">DO vs. DOES</h2>
-                        <p className="text-lg mb-4">These are our helper verbs! We use them to ask questions.</p>
-                        <div className="grid grid-cols-2 gap-4 text-center">
-                            <div className="bg-white p-3 rounded shadow">
-                                <strong className="text-purple-600 block text-xl">DO</strong>
-                                <span>I, You, We, They</span>
-                            </div>
-                            <div className="bg-white p-3 rounded shadow">
-                                <strong className="text-purple-600 block text-xl">DOES</strong>
-                                <span>He, She, It</span>
-                            </div>
-                        </div>
+                <div className="space-y-4">
+                    <div className="bg-purple-50 p-4 rounded-xl border-2 border-purple-200 mb-6">
+                        <h3 className="font-bold text-purple-600">The Rule:</h3>
+                        <ul className="list-disc pl-5">
+                            <li><strong>Do</strong> you / we / they / I ...?</li>
+                            <li><strong>Does</strong> he / she / it ...?</li>
+                        </ul>
                     </div>
 
-                    <Character
-                        name="Leo"
-                        dialogue="Do you like mysteries? I do! But does Mia like mysteries?"
-                    />
-
-                    <Character
-                        name="Mia"
-                        position="right"
-                        dialogue="No, I don't! I like taking photos. Does your cat like photos?"
-                    />
-
-                    <div className="bg-white p-6 rounded-xl shadow-lg border-2 border-slate-200">
-                        <h3 className="text-xl font-bold text-center mb-6 text-adventure-blue">Can you fix the questions?</h3>
-
-                        {/* Question 1 */}
-                        <div className="mb-6 border-b pb-6">
-                            <p className="text-2xl font-bold text-center mb-4">
-                                ___ you want to go on an adventure?
-                            </p>
-                            <div className="flex justify-center gap-4">
-                                <button
-                                    onClick={() => checkAnswer('q1', 'Do')}
-                                    className={`px-6 py-2 rounded-full font-bold text-xl border-4 ${answers.q1 === 'Do' ? 'bg-green-500 text-white border-green-600' : 'bg-white border-slate-200 hover:bg-slate-50'}`}
-                                >
-                                    Do
-                                </button>
-                                <button
-                                    onClick={() => checkAnswer('q1', 'Does')}
-                                    className={`px-6 py-2 rounded-full font-bold text-xl border-4 ${answers.q1 === 'Does' ? 'bg-red-500 text-white border-red-600' : 'bg-white border-slate-200 hover:bg-slate-50'}`}
-                                >
-                                    Does
-                                </button>
+                    <div className="space-y-4">
+                        <div className="p-3 bg-white rounded shadow border border-slate-100">
+                            <p className="font-bold mb-2">1. ______ you like pizza?</p>
+                            <div className="flex gap-2">
+                                <button onClick={() => checkAnswer(1, 'Do')} className={`px-3 py-1 rounded ${answers[1] === 'Do' ? 'bg-green-500 text-white' : 'bg-slate-200'}`}>Do</button>
+                                <button onClick={() => checkAnswer(1, 'Does')} className={`px-3 py-1 rounded ${answers[1] === 'Does' ? 'bg-red-500 text-white' : 'bg-slate-200'}`}>Does</button>
                             </div>
-                            {answers.q1 === 'Do' && <p className="text-green-600 text-center mt-2 font-bold">Correct! "You" needs "Do"!</p>}
-                            {answers.q1 === 'Does' && <p className="text-red-500 text-center mt-2 font-bold">Try again! Look at the helper box 👆</p>}
                         </div>
 
-                        {/* Question 2 */}
-                        <div>
-                            <p className="text-2xl font-bold text-center mb-4">
-                                Where ___ she keep her map?
-                            </p>
-                            <div className="flex justify-center gap-4">
-                                <button
-                                    onClick={() => checkAnswer('q2', 'Do')}
-                                    className={`px-6 py-2 rounded-full font-bold text-xl border-4 ${answers.q2 === 'Do' ? 'bg-red-500 text-white border-red-600' : 'bg-white border-slate-200 hover:bg-slate-50'}`}
-                                >
-                                    do
-                                </button>
-                                <button
-                                    onClick={() => checkAnswer('q2', 'Does')}
-                                    className={`px-6 py-2 rounded-full font-bold text-xl border-4 ${answers.q2 === 'Does' ? 'bg-green-500 text-white border-green-600' : 'bg-white border-slate-200 hover:bg-slate-50'}`}
-                                >
-                                    does
-                                </button>
+                        <div className="p-3 bg-white rounded shadow border border-slate-100">
+                            <p className="font-bold mb-2">2. ______ Leo play soccer?</p>
+                            <div className="flex gap-2">
+                                <button onClick={() => checkAnswer(2, 'Do')} className={`px-3 py-1 rounded ${answers[2] === 'Do' ? 'bg-red-500 text-white' : 'bg-slate-200'}`}>Do</button>
+                                <button onClick={() => checkAnswer(2, 'Does')} className={`px-3 py-1 rounded ${answers[2] === 'Does' ? 'bg-green-500 text-white' : 'bg-slate-200'}`}>Does</button>
                             </div>
-                            {answers.q2 === 'Does' && <p className="text-green-600 text-center mt-2 font-bold">Yes! "She" needs "Does"!</p>}
-                            {answers.q2 === 'Do' && <p className="text-red-500 text-center mt-2 font-bold">Oops! "She" is special!</p>}
                         </div>
                     </div>
                 </div>
+            }
+
+            CharacterArea={
+                <>
+                    <Character
+                        name="Mia"
+                        image={miaImg}
+                        dialogue="Do you like my camera? Does it look cool?"
+                        isTalking={true}
+                    />
+                    <Character
+                        name="Leo"
+                        image={leoImg}
+                        dialogue="Yes I do! But does it take videos?"
+                        isTalking={true}
+                    />
+                </>
             }
         />
     );
