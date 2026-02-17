@@ -14,7 +14,12 @@ const Chapter5_Prepositions = () => {
 
             ChapterContent={
                 <div className="space-y-6">
-                    <h3 className="font-bold text-xl text-blue-600 mb-4">Click the buttons to move the cat!</h3>
+                    <div className="bg-blue-50 p-4 rounded-xl border-l-8 border-blue-400 mb-6">
+                        <h3 className="font-bold text-xl text-blue-600 mb-2">Grammar Rule: Prepositions</h3>
+                        <p>We use prepositions to say <strong>where</strong> something is.</p>
+                    </div>
+
+                    <h3 className="font-bold text-xl text-slate-700 mb-4">Click the buttons to move the cat!</h3>
 
                     <div className="grid grid-cols-2 gap-4">
                         <button onClick={() => setCatPosition('on')} className={`p-3 rounded-xl border-b-4 font-bold transition ${catPosition === 'on' ? 'bg-blue-500 text-white border-blue-700' : 'bg-white border-slate-200 hover:bg-blue-50'}`}>ON</button>
@@ -34,16 +39,16 @@ const Chapter5_Prepositions = () => {
                     {/* The Box Scene */}
                     <div className="relative w-64 h-64">
                         {/* The Box */}
-                        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-40 h-40 bg-orange-300 border-4 border-orange-500 rounded-lg z-10 flex items-center justify-center shadow-lg">
-                            <span className="text-orange-700 font-bold opacity-50 text-4xl">BOX</span>
+                        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-40 h-40 z-10 flex items-center justify-center">
+                            <span className="text-9xl drop-shadow-lg leading-[1]">📦</span>
                         </div>
 
                         {/* The Cat */}
                         <div className={`absolute transition-all duration-500 text-6xl z-20
-                    ${catPosition === 'on' ? 'bottom-[160px] left-1/2 -translate-x-1/2' : ''}
+                    ${catPosition === 'on' ? 'bottom-[130px] left-1/2 -translate-x-1/2' : ''}
                     ${catPosition === 'in' ? 'bottom-[60px] left-1/2 -translate-x-1/2 z-0 opacity-80' : ''}
-                    ${catPosition === 'under' ? '-bottom-[40px] left-1/2 -translate-x-1/2 z-20 scale-y-50 origin-top' : ''} 
-                    ${catPosition === 'next_to' ? 'bottom-0 -right-8' : ''}
+                    ${catPosition === 'under' ? '-bottom-[20px] left-1/2 -translate-x-1/2 z-20 scale-y-50 origin-top' : ''} 
+                    ${catPosition === 'next_to' ? 'bottom-0 -right-4' : ''}
                 `}>
                             🐱
                         </div>

@@ -105,3 +105,13 @@ An interactive storybook web application for 11-year-old ESL students (A1-A2 lev
 - **Characters**: Redesigned to remove "text message" bubbles. Now features large avatars with name badges and natural text.
 - **Navigation**: Fixed "404 Not Found" error on Next/Previous buttons by switching to React Router `<Link>`.
 **Status**: Deployed & Verified.
+
+### Phase 11: Storybook Redesign 📖
+**Completed by**: Antigravity
+**Date**: 2026-02-17
+**Changes**:
+- **Format**: Implemented "Digital Storybook" linear navigation (Welcome -> Index -> Chapters).
+- **Visuals**: Added individual Pixar-style sprites for Leo, Mia, Ivy, Sam. Added new Time Machine illustration.
+- **Components**: Created `TitlePage`, updated `StoryPage` for split view, refactored `Character` for speech bubbles.
+- **Content**: Updated Mock Test with A2-B1 reading passages.
+**Status**: Deployed & Verified.

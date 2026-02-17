@@ -14,6 +14,15 @@ const Chapter2_VerbToBe = () => {
 
             ChapterContent={
                 <div className="space-y-6">
+                    <div className="bg-pink-50 p-6 rounded-xl border-l-8 border-pink-400 mb-6 shadow-sm">
+                        <h3 className="font-bold text-xl text-pink-600 mb-2">Grammar Rule: Verb 'To Be'</h3>
+                        <ul className="list-disc pl-5 text-lg text-slate-700 space-y-1">
+                            <li>I <strong>am</strong> (I am Leo)</li>
+                            <li>He / She / It <strong>is</strong> (He is Sam)</li>
+                            <li>You / We / They <strong>are</strong> (We are friends)</li>
+                        </ul>
+                    </div>
+
                     <h3 className="font-bold text-2xl text-pink-500 mb-4">Match the Pairs!</h3>
                     <p className="mb-4 text-slate-600">Connect the subject with the correct verb.</p>
 

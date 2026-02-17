@@ -20,7 +20,7 @@ const Character = ({ name, image, dialogue, isTalking = true }) => {
                 <img
                     src={image}
                     alt={name}
-                    className="h-64 md:h-80 object-contain drop-shadow-2xl filter hover:brightness-110 transition"
+                    className="h-64 md:h-80 object-contain drop-shadow-2xl filter hover:brightness-110 transition mix-blend-multiply"
                 />
 
                 {/* Name Badge */}

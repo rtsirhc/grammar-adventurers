@@ -27,6 +27,8 @@ const Chapter3_DoDoes = () => {
                         </ul>
                     </div>
 
+                    <h3 className="font-bold text-lg text-purple-700 mb-4">Click the correct word to complete the sentence!</h3>
+
                     <div className="space-y-4">
                         <div className="p-3 bg-white rounded shadow border border-slate-100">
                             <p className="font-bold mb-2">1. ______ you like pizza?</p>
