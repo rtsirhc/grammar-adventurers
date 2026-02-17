@@ -1,4 +1,5 @@
 import React from 'react';
+import characterImg from '../assets/characters_sample.png';
 
 const Character = ({ name, dialogue, position = "left" }) => {
     return (
@@ -6,7 +7,7 @@ const Character = ({ name, dialogue, position = "left" }) => {
             {/* Character Avatar Circle */}
             <div className="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 rounded-full border-4 border-white shadow-lg overflow-hidden bg-adventure-blue">
                 <img
-                    src="/src/assets/characters_sample.png"
+                    src={characterImg}
                     alt={name}
                     className="w-full h-full object-cover"
                 />
