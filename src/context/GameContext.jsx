@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext, useCallback } from 'react';
 
 const GameContext = createContext();
 
@@ -8,9 +8,9 @@ export const GameProvider = ({ children }) => {
     const [isTimeMachineActive, setIsTimeMachineActive] = useState(false);
     const [currentChapter, setCurrentChapter] = useState(0);
 
-    const toggleTimeMachine = (forceState) => {
+    const toggleTimeMachine = useCallback((forceState) => {
         setIsTimeMachineActive(prev => forceState !== undefined ? forceState : !prev);
-    };
+    }, []);
 
     const value = {
         isTimeMachineActive,
@@ -21,9 +21,7 @@ export const GameProvider = ({ children }) => {
 
     return (
         <GameContext.Provider value={value}>
-            <div className={`min-h-screen transition-all duration-1000 ${isTimeMachineActive ? "grayscale" : ""}`}>
-                {children}
-            </div>
+            {children}
         </GameContext.Provider>
     );
 };
