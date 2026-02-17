@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { createClient } from '@supabase/supabase-js';
 
 const supabaseUrl = 'https://slkvapwjsthhbshunwvl.supabase.co';
@@ -15,7 +15,6 @@ const MockTest = () => {
     const [submitted, setSubmitted] = useState(false);
 
     const questions = [
-        // ... (Keep existing questions - truncated for brevity but in real code I'd keep them all)
         { id: 1, text: "Every day, Leo ______ up at 7 AM.", options: ["wake", "wakes", "waking"], correct: "wakes" },
         { id: 2, text: "I ______ pizza.", options: ["like", "likes", "liking"], correct: "like" },
         { id: 3, text: "She ______ play soccer.", options: ["don't", "doesn't", "isn't"], correct: "doesn't" },
@@ -88,6 +87,17 @@ const MockTest = () => {
         }
     };
 
+    const navigate = useNavigate();
+
+    const handleTryAgain = () => {
+        setCurrentQuestion(0);
+        setScore(0);
+        setShowResults(false);
+        setSelectedAnswer(null);
+        setStudentName('');
+        setSubmitted(false);
+    };
+
     if (showResults) {
         return (
             <div className="min-h-screen bg-gradient-to-br from-green-400 to-blue-500 flex flex-col items-center justify-center p-8 text-white">
@@ -98,7 +108,7 @@ const MockTest = () => {
 
                     {!submitted ? (
                         <div className="mb-8 p-6 bg-slate-50 rounded-xl border-2 border-slate-200">
-                            <label className="block text-lg font-bold mb-2 text-slate-600">Type your full name:</label>
+                            <label className="block text-lg font-bold mb-2 text-slate-600">Type your full name to save & continue:</label>
                             <div className="flex gap-2">
                                 <input
                                     type="text"
@@ -128,15 +138,41 @@ const MockTest = () => {
                                 "Good practice! Try again to get a perfect score! 💪"}
                     </p>
 
-                    <Link to="/" className="inline-block px-8 py-4 bg-adventure-yellow hover:bg-yellow-400 text-white font-bold rounded-full text-xl shadow-lg transition transform hover:scale-105">
-                        Back to Home 🏠
-                    </Link>
+                    <div className="flex gap-4 justify-center">
+                        <button
+                            onClick={handleTryAgain}
+                            disabled={!submitted}
+                            className={`px-8 py-4 font-bold rounded-full text-xl shadow-lg transition transform ${submitted
+                                ? "bg-blue-500 hover:bg-blue-600 text-white hover:scale-105"
+                                : "bg-slate-300 text-slate-500 cursor-not-allowed opacity-50"
+                                }`}
+                        >
+                            Try Again 🔄
+                        </button>
+
+                        <button
+                            onClick={() => navigate('/')}
+                            disabled={!submitted}
+                            className={`px-8 py-4 font-bold rounded-full text-xl shadow-lg transition transform ${submitted
+                                ? "bg-adventure-yellow hover:bg-yellow-400 text-white hover:scale-105"
+                                : "bg-slate-300 text-slate-500 cursor-not-allowed opacity-50"
+                                }`}
+                        >
+                            Back to Home 🏠
+                        </button>
+                    </div>
+                    {!submitted && (
+                        <p className="mt-4 text-sm text-slate-500 italic">
+                            * Please save your name to enable buttons
+                        </p>
+                    )}
                 </div>
             </div>
         );
     }
 
-    const question = questions[currentQuestion];
+
+    const question = questions.slice(0, 1)[currentQuestion];
 
     return (
         <div className="min-h-screen bg-slate-100 flex flex-col items-center justify-center p-4">
