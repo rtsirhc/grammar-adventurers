@@ -1,3 +1,4 @@
+
 # Grammar Adventurers
 
 ## Project Definition
@@ -16,7 +17,7 @@ An interactive storybook web application for 11-year-old ESL students (A1-A2 lev
 
 ## Technology Stack
 - **Framework**: Vite + React
-- **Styling**: Tailwind CSS
+- **Styling**: Tailwind CSS (v4)
 - **Routing**: React Router (implied for navigation)
 - **State Management**: React State / Context (for global theme/Time Machine effect)
 
@@ -63,4 +64,35 @@ An interactive storybook web application for 11-year-old ESL students (A1-A2 lev
 
 ## Phase Completion Log
 
-(To be filled)
+### Phase 2-7: Development & Content ✅
+**Completed by**: Antigravity
+**Date**: 2026-02-17
+
+**What was done:**
+- Implemented core architecture (Vite, React, Tailwind).
+- Generated characters and Time Machine assets (Pixar style).
+- Created 7 interactive chapters covering A1-A2 grammar.
+- Implemented games: Matching, Preposition Scene, Possessive Assignment.
+- Implemented "Time Machine" global grayscale effect.
+- Created comprehensive Mock Test with 20 questions (Grammar + Reading).
+
+**Files created:**
+- `src/App.jsx`: Main routing.
+- `src/components/`: StoryPage, Character, MatchingGame.
+- `src/pages/`: Chapters 1-7, MockTest.
+- `src/context/GameContext.jsx`: State management.
+
+### Phase 8: Deployment ✅
+**Status**: Live on Vercel
+**URL**: https://grammar-adventurers.vercel.app
+
+### Phase 9: Bug Fixes ✅
+**Completed by**: Antigravity
+**Date**: 2026-02-17
+**Issue**: Chapter 1 formatting broken, missing images.
+**Fix**: 
+- Installed `@tailwindcss/postcss` for Tailwind v4 support.
+- Created `postcss.config.js`.
+- Updated `src/index.css` with `@import "tailwindcss";` syntax.
+- Fixed image import in `Character.jsx` to resolve asset paths in production build.
+**Status**: Deployed & Verified.

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useGame } from '../context/GameContext';
 
 const StoryPage = ({ title, ChapterContent, NextChapterPath, PrevChapterPath }) => {
@@ -25,15 +26,15 @@ const StoryPage = ({ title, ChapterContent, NextChapterPath, PrevChapterPath }) 
                 {/* Navigation Footer */}
                 <div className="mt-8 flex justify-between items-center">
                     {PrevChapterPath ? (
-                        <a href={PrevChapterPath} className="px-6 py-3 bg-slate-200 hover:bg-slate-300 rounded-full font-bold text-slate-700 transition transform hover:scale-105">
+                        <Link to={PrevChapterPath} className="px-6 py-3 bg-slate-200 hover:bg-slate-300 rounded-full font-bold text-slate-700 transition transform hover:scale-105">
                             ⬅️ Previous
-                        </a>
+                        </Link>
                     ) : <div></div>}
 
                     {NextChapterPath ? (
-                        <a href={NextChapterPath} className="px-6 py-3 bg-adventure-yellow hover:bg-yellow-400 rounded-full font-bold text-white shadow-lg transition transform hover:scale-105">
+                        <Link to={NextChapterPath} className="px-6 py-3 bg-adventure-yellow hover:bg-yellow-400 rounded-full font-bold text-white shadow-lg transition transform hover:scale-105">
                             Next Adventure ➡️
-                        </a>
+                        </Link>
                     ) : <div></div>}
                 </div>
 
